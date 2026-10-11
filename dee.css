@@ -1,0 +1,3646 @@
+
+
+/* HEADER หลัก */
+
+header {
+    width: 100%;
+    background: linear-gradient(135deg, #000000, #000000);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-top: 2px solid #f5d76e;
+}
+
+
+/* ========================================
+   ส่วนด้านใน Header
+======================================== */
+
+.header {
+    width: 100%;
+    max-width: 1200px;
+    height: 75px;
+
+    margin: 0 auto;
+    padding: 0 25px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/*    LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+}
+
+.logo img {
+    width: 55px;
+    height: 55px;
+
+    object-fit: contain;
+
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.08);
+}
+
+
+/*   NAVIGATION */
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav > ul {
+    display: flex;
+    align-items: center;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    gap: 5px;
+}
+
+
+/* เมนูหลัก */
+
+nav > ul > li {
+    position: relative;
+
+    list-style: none;
+}
+
+
+/* ลิงก์เมนูหลัก */
+
+nav > ul > li > a {
+    display: block;
+
+    padding: 12px 17px;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    border-radius: 8px;
+
+    transition:
+        color 0.3s ease,
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* Hover เมนูหลัก */
+
+nav > ul > li > a:hover {
+    color: #f5d76e;
+
+    background-color: rgba(255, 255, 255, 0.12);
+
+    transform: translateY(-2px);
+}
+
+
+/* 
+   DROPDOWN */
+
+
+/* ตัว Dropdown */
+
+.dropdown {
+    position: relative;
+}
+
+
+/* ลูกศร */
+
+.dropdown > a::after {
+    content: " ▾";
+
+    color: #f5d76e;
+
+    font-size: 13px;
+
+    transition: transform 0.3s ease;
+}
+
+
+/* หมุนลูกศรเมื่อ Hover */
+
+.dropdown:hover > a::after {
+    display: inline-block;
+
+    transform: rotate(180deg);
+}
+
+
+/*  กล่อง Dropdown */
+
+nav > ul > li > ul.dropdown-content {
+
+    /* สำคัญ: ทำให้รายการเรียงแนวตั้ง */
+    display: block;
+
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+
+    width: 250px;
+    min-width: 250px;
+
+    margin: 10px 0 0 0;
+    padding: 8px 0;
+
+    list-style: none;
+
+    background: #ffffff;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.20);
+
+    /* ซ่อน Dropdown */
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-10px);
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease,
+        transform 0.25s ease;
+
+    z-index: 2000;
+
+    box-sizing: border-box;
+}
+
+
+/* แสดง Dropdown เมื่อ Hover */
+
+nav > ul > li.dropdown:hover > ul.dropdown-content {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+
+/*   รายการใน Dropdown */
+
+nav > ul > li > ul.dropdown-content > li {
+
+    /* สำคัญมาก
+       บังคับให้แต่ละรายการอยู่คนละบรรทัด */
+
+    display: block;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+
+/*   ลิงก์ภายใน Dropdown */
+
+nav > ul > li > ul.dropdown-content > li > a {
+
+    display: block;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 18px;
+
+    color: #26382b;
+
+    background: transparent;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    border-radius: 0;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        padding-left 0.2s ease;
+}
+
+
+/* Hover รายการ Dropdown */
+
+nav > ul > li > ul.dropdown-content > li > a:hover {
+
+    color: #ffffff;
+
+    background-color: #315b38;
+
+    padding-left: 25px;
+}
+
+
+/*   เส้นแบ่ง Dropdown*/
+
+nav > ul > li > ul.dropdown-content > li:not(:last-child) > a {
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+/*   ลูกศรเล็ก ๆ ด้านบน Dropdown */
+
+.dropdown-content::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -6px;
+    left: 25px;
+
+    width: 12px;
+    height: 12px;
+
+    background: #ffffff;
+
+    transform: rotate(45deg);
+
+    z-index: -1;
+}
+
+
+/*  DROPDOWN อันที่สอง
+   สำหรับ "เพิ่มเติม" */
+
+nav > ul > li:nth-child(3) > ul.dropdown-content {
+    width: 220px;
+    min-width: 220px;
+}
+
+
+/*  เอฟเฟกต์เมนูหลัก */
+
+nav > ul > li > a {
+    position: relative;
+}
+
+
+/* เส้นใต้เมื่อ Hover */
+
+nav > ul > li:not(.dropdown) > a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 5px;
+
+    width: 0;
+    height: 2px;
+
+    background-color: #f5d76e;
+
+    transform: translateX(-50%);
+
+    transition: width 0.3s ease;
+}
+
+
+nav > ul > li:not(.dropdown) > a:hover::after {
+    width: 50%;
+}
+
+
+/*   หน้าปัจจุบัน
+   ถ้าต้องการใช้ class="active" */
+
+nav > ul > li > a.active {
+    color: #172b1d;
+
+    background-color: #f5d76e;
+
+    font-weight: 700;
+}
+
+
+/* RESPONSIVE Tablet */
+
+@media (max-width: 900px) {
+
+    .header {
+        height: 70px;
+
+        padding: 0 18px;
+    }
+
+
+    .logo img {
+        width: 50px;
+        height: 50px;
+    }
+
+
+    nav > ul {
+        gap: 2px;
+    }
+
+
+    nav > ul > li > a {
+        padding: 10px 12px;
+
+        font-size: 14px;
+    }
+
+
+    nav > ul > li > ul.dropdown-content {
+        width: 230px;
+        min-width: 230px;
+    }
+}
+
+
+/* RESPONSIVE Mobile */
+
+@media (max-width: 650px) {
+
+    .header {
+        height: auto;
+
+        min-height: 70px;
+
+        padding: 10px 15px;
+
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+
+    .logo {
+        justify-content: center;
+    }
+
+
+    .logo img {
+        width: 45px;
+        height: 45px;
+    }
+
+
+    nav {
+        width: 100%;
+
+        justify-content: center;
+    }
+
+
+    nav > ul {
+        width: 100%;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 3px;
+    }
+
+
+    nav > ul > li > a {
+        padding: 9px 10px;
+
+        font-size: 13px;
+    }
+
+
+    /* Dropdown บนมือถือ */
+
+    nav > ul > li > ul.dropdown-content {
+        width: 220px;
+        min-width: 220px;
+
+        left: 50%;
+
+        transform: translate(-50%, -10px);
+    }
+
+
+    nav > ul > li.dropdown:hover > ul.dropdown-content {
+        transform: translate(-50%, 0);
+    }
+}
+
+
+/* หน้าจอเล็กมาก */
+
+@media (max-width: 400px) {
+
+    .header {
+        padding: 8px 10px;
+    }
+
+
+    nav > ul > li > a {
+        padding: 8px;
+
+        font-size: 12px;
+    }
+
+
+    nav > ul > li > ul.dropdown-content {
+        width: 200px;
+        min-width: 200px;
+    }
+}
+
+/* RESPONSIVE BASE */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+/* ส่วนเนื้อหา */
+
+/* ส่วนเนื้อหา */
+
+/* =========================================================
+   1. ตัวแปรสีของเว็บไซต์
+   ---------------------------------------------------------
+   แก้สีหลักของเว็บไซต์ได้จากตรงนี้
+========================================================= */
+
+:root {
+
+    /* สีพื้นหลังเว็บไซต์ */
+    --bg-color: rgb(255, 253, 253);
+
+    /* สีพื้นหลังของกล่อง */
+    --card-color: #f5d784;
+
+    /* สีกรอบ/พื้นหลังบริเวณรูป */
+    --image-bg: #f5d784;
+
+    /* สีหัวข้อ */
+    --heading-color: #333333;
+
+    /* สีตัวหนังสือ */
+    --text-color: #444444;
+
+    /* สีตัวหนังสือรอง */
+    --text-light: #666666;
+
+    /* สีเส้นแบ่ง */
+    --border-color: #dcdcdc;
+
+    /* สีตกแต่ง */
+    --accent-color: #777777;
+
+    /* สีเงา */
+    --shadow-color: rgba(0, 0, 0, 0.10);
+}
+
+
+/* =========================================================
+   2. ตั้งค่าพื้นฐานของหน้าเว็บ
+========================================================= */
+
+body {
+
+    margin: 0;
+
+    background-color: var(--bg-color);
+
+    color: var(--text-color);
+
+    font-family:
+        "Noto Sans Thai",
+        "Tahoma",
+        Arial,
+        sans-serif;
+}
+
+
+/* =========================================================
+   3. ส่วน MAIN
+   ---------------------------------------------------------
+   กำหนดความกว้างและระยะห่างของเนื้อหาทั้งหมด
+========================================================= */
+
+main {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 50px 15px 80px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   4. ส่วนหัวของเนื้อหา
+   ---------------------------------------------------------
+   เช่น "สัตว์บก"
+========================================================= */
+
+.con-a {
+
+    width: 100%;
+
+    max-width: 900px;
+
+    margin: 0 auto 50px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   5. หัวข้อหลัก
+   ---------------------------------------------------------
+   เช่น
+   สัตว์บก
+   สัตว์น้ำ
+   สัตว์ปีก
+========================================================= */
+
+.con-a h1 {
+
+    margin: 0 0 20px;
+
+    color: var(--heading-color);
+
+    font-size: clamp(30px, 4vw, 44px);
+
+    font-weight: 700;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   6. เส้นตกแต่งใต้หัวข้อ
+========================================================= */
+
+.con-a h1::after {
+
+    content: "";
+
+    display: block;
+
+    width: 70px;
+
+    height: 4px;
+
+    margin: 15px auto 0;
+
+    background-color: var(--accent-color);
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   7. คำอธิบายใต้หัวข้อ
+========================================================= */
+
+.con-a p {
+
+    margin: 25px auto 0;
+
+    color: var(--text-light);
+
+    font-size: 17px;
+
+    line-height: 1.9;
+
+    text-align: justify;
+}
+
+
+/* =========================================================
+   8. กล่องรวมข้อมูลสัตว์
+   ---------------------------------------------------------
+   เป็นกรอบใหญ่ที่รวม "รูป + ข้อมูล"
+========================================================= */
+
+.animal-grid {
+
+    width: 100%;
+
+    
+}
+
+
+.animal-card {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(350px, 0.9fr)
+        minmax(400px, 1.1fr);
+
+    background-color: var(--card-color);
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 30px var(--shadow-color);
+
+    /* ระยะห่างระหว่างกล่องแต่ละตัว */
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   9. กรอบรูป
+   ---------------------------------------------------------
+   *** ถ้าต้องการเปลี่ยน "สีกรอบรูป"
+   ให้แก้ที่ background-color ตรงนี้ ***
+========================================================= */
+
+.animal-pic {
+
+    width: 100%;
+
+    /*
+       ความสูงของกรอบรูป
+       รูปทุกตัวจะอยู่ในกรอบสูงเท่ากัน
+    */
+
+    height: 360px;
+
+    min-height: 360px;
+
+    /*
+       ระยะห่างระหว่างรูปกับขอบกรอบ
+    */
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    /*
+       จัดรูปให้อยู่ตรงกลางกรอบ
+    */
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    /*
+       =====================================
+       สีพื้นหลังของ "กรอบรูป"
+       =====================================
+
+       ตอนนี้ใช้สีเทาอ่อน
+
+       ถ้าอยากเปลี่ยนสี เช่น
+
+       สีขาว:
+       #ffffff
+
+       สีเทาเข้ม:
+       #dddddd
+
+       สีเขียว:
+       #e5eee5
+
+       ให้แก้ตรงนี้
+    */
+
+    background-color: var(--image-bg);
+
+    /*
+       ป้องกันรูปทะลุออกนอกกรอบ
+    */
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   10. รูปภาพ
+   ---------------------------------------------------------
+   กำหนดให้รูปทุกภาพแสดงเต็มโดยไม่ถูกตัด
+========================================================= */
+
+.animal-pic img {
+
+    /*
+       ให้รูปใช้พื้นที่ภายในกรอบ
+    */
+
+    width: 100%;
+
+    height: 100%;
+
+    max-width: 100%;
+
+    max-height: 100%;
+
+    display: block;
+
+    /*
+       =====================================
+       สำคัญมาก
+       =====================================
+
+       contain = แสดงรูปทั้งหมด
+       ไม่ตัดหัว ไม่ตัดขา ไม่ตัดด้านข้าง
+    */
+
+    object-fit: contain;
+
+    /*
+       จัดรูปให้อยู่ตรงกลาง
+    */
+
+    object-position: center center;
+
+    /*
+       ทำให้มุมรูปมน
+    */
+
+    border-radius: 10px;
+
+    /*
+       เงาของรูป
+    */
+
+    filter:
+        drop-shadow(
+            0 5px 10px rgba(0, 0, 0, 0.12)
+        );
+
+    /*
+       เอฟเฟกต์เวลา Hover
+    */
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+/* =========================================================
+   11. เอฟเฟกต์เมื่อเอาเมาส์วางบนรูป
+========================================================= */
+
+.animal-pic:hover img {
+
+    transform: scale(1.03);
+}
+
+
+/* =========================================================
+   12. ส่วนข้อมูลสัตว์
+   ---------------------------------------------------------
+   เช่น ชื่อสัตว์
+   วิวัฒนาการ
+   ยุคที่ถือกำเนิด
+   ลักษณะ
+========================================================= */
+
+.animal-info {
+
+    width: 100%;
+
+    padding: 35px 40px;
+
+    box-sizing: border-box;
+
+    /*
+       สีพื้นหลังข้อมูล
+    */
+
+    background-color: var(--card-color);
+}
+
+
+/* =========================================================
+   13. ชื่อสัตว์
+   ---------------------------------------------------------
+   เช่น
+   1. แมลงสาบ
+   2. ช้าง
+   3. จระเข้
+========================================================= */
+
+.animal-info h2 {
+
+    margin: 0 0 22px;
+
+    /*
+       เส้นด้านซ้ายของชื่อสัตว์
+    */
+
+    padding-left: 15px;
+
+    border-left: 5px solid var(--accent-color);
+
+    color: var(--heading-color);
+
+    font-size: clamp(22px, 2.5vw, 30px);
+
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   14. ข้อมูลแต่ละย่อหน้า
+========================================================= */
+
+.animal-info p {
+
+    margin: 0 0 14px;
+
+    color: var(--text-color);
+
+    font-size: 16px;
+
+    font-weight: 400;
+
+    line-height: 1.85;
+
+    text-align: left;
+
+    /*
+       ป้องกันข้อความยาวเกินกรอบ
+    */
+
+    overflow-wrap: break-word;
+
+    word-wrap: break-word;
+}
+
+
+/* =========================================================
+   15. ตัวหนาในข้อมูล
+   ---------------------------------------------------------
+   เช่น
+
+   วิวัฒนาการ:
+   ยุคที่ถือกำเนิด:
+   ลักษณะ:
+========================================================= */
+
+.animal-info p strong {
+
+    color: var(--heading-color);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   16. ย่อหน้าสุดท้าย
+========================================================= */
+
+.animal-info p:last-child {
+
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   17. เส้นแบ่งระหว่างสัตว์แต่ละตัว
+========================================================= */
+
+.animal-grid > .animal-pic:nth-child(n+3) {
+
+    border-top: 1px solid var(--border-color);
+}
+
+
+.animal-grid > .animal-info:nth-child(n+4) {
+
+    border-top: 1px solid var(--border-color);
+}
+
+
+/* =========================================================
+   18. TABLET
+   ---------------------------------------------------------
+   หน้าจอไม่เกิน 900px
+========================================================= */
+
+@media screen and (max-width: 900px) {
+
+    main {
+
+        padding: 40px 20px 60px;
+    }
+
+
+    /* หัวข้อ */
+
+    .con-a {
+
+        margin-bottom: 35px;
+    }
+
+
+    .con-a h1 {
+
+        font-size: 36px;
+    }
+
+
+    .con-a p {
+
+        font-size: 16px;
+
+        line-height: 1.8;
+    }
+
+
+    /* กล่องสัตว์ */
+
+    .animal-grid {
+
+        grid-template-columns:
+            minmax(280px, 0.9fr)
+            minmax(320px, 1.1fr);
+    }
+
+
+    /* กรอบรูป */
+
+    .animal-pic {
+
+        height: 320px;
+
+        min-height: 320px;
+
+        padding: 18px;
+    }
+
+
+    /* ข้อมูล */
+
+    .animal-info {
+
+        padding: 28px;
+    }
+
+
+    .animal-info h2 {
+
+        font-size: 24px;
+
+        margin-bottom: 18px;
+    }
+
+
+    .animal-info p {
+
+        font-size: 15px;
+
+        line-height: 1.8;
+    }
+}
+
+
+/* =========================================================
+   19. MOBILE
+   ---------------------------------------------------------
+   หน้าจอไม่เกิน 650px
+========================================================= */
+
+@media screen and (max-width: 650px) {
+
+    main {
+
+        padding: 30px 15px 50px;
+    }
+
+
+    /* หัวข้อ */
+
+    .con-a {
+
+        margin-bottom: 30px;
+    }
+
+
+    .con-a h1 {
+
+        font-size: 30px;
+    }
+
+
+    .con-a p {
+
+        margin-top: 20px;
+
+        font-size: 15px;
+
+        line-height: 1.8;
+
+        text-align: left;
+    }
+
+
+    /*
+       จากเดิมรูปอยู่ซ้าย
+       ข้อมูลอยู่ขวา
+
+       เปลี่ยนเป็น
+
+       รูป
+       ↓
+       ข้อมูล
+    */
+
+    .animal-grid {
+
+        grid-template-columns: 1fr;
+
+        border-radius: 14px;
+    }
+
+
+    /* =====================================================
+       กรอบรูปบนมือถือ
+    ===================================================== */
+
+    .animal-pic {
+
+        width: 100%;
+
+        height: 260px;
+
+        min-height: 260px;
+
+        padding: 15px;
+    }
+
+
+    /* รูปมือถือ */
+
+    .animal-pic img {
+
+        width: 100%;
+
+        height: 100%;
+
+        max-width: 100%;
+
+        max-height: 100%;
+
+        object-fit: contain;
+
+        object-position: center;
+    }
+
+
+    /* =====================================================
+       ข้อมูลมือถือ
+    ===================================================== */
+
+    .animal-info {
+
+        padding: 25px 20px;
+    }
+
+
+    .animal-info h2 {
+
+        margin-bottom: 18px;
+
+        padding-left: 12px;
+
+        border-left-width: 4px;
+
+        font-size: 23px;
+
+        line-height: 1.4;
+    }
+
+
+    .animal-info p {
+
+        margin-bottom: 13px;
+
+        font-size: 15px;
+
+        line-height: 1.8;
+
+        text-align: left;
+    }
+
+
+    /* เส้นแบ่งแต่ละสัตว์ */
+
+    .animal-grid > .animal-pic {
+
+        border-top: 1px solid var(--border-color);
+    }
+
+
+    .animal-grid > .animal-pic:first-child {
+
+        border-top: none;
+    }
+}
+
+
+/* =========================================================
+   20. MOBILE ขนาดเล็กมาก
+   ---------------------------------------------------------
+   หน้าจอไม่เกิน 400px
+========================================================= */
+
+@media screen and (max-width: 400px) {
+
+    main {
+
+        padding: 25px 12px 40px;
+    }
+
+
+    /* หัวข้อ */
+
+    .con-a h1 {
+
+        font-size: 27px;
+    }
+
+
+    .con-a p {
+
+        font-size: 14px;
+
+        line-height: 1.75;
+    }
+
+
+    /* กรอบรูป */
+
+    .animal-pic {
+
+        height: 230px;
+
+        min-height: 230px;
+
+        padding: 12px;
+    }
+
+
+    /* รูป */
+
+    .animal-pic img {
+
+        max-height: 100%;
+    }
+
+
+    /* กล่องข้อมูล */
+
+    .animal-info {
+
+        padding: 22px 17px;
+    }
+
+
+    .animal-info h2 {
+
+        font-size: 21px;
+    }
+
+
+    .animal-info p {
+
+        font-size: 14px;
+
+        line-height: 1.75;
+    }
+}
+
+
+/* คลิกดู หน้าหลัก*/
+
+/* ========================================
+   CATEGORY SECTION
+======================================== */
+
+.category-section {
+    width: 100%;
+    padding: 50px 0;
+    background: #f5f5f5;
+}
+
+
+/* ========================================
+   กล่องรวมหมวดหมู่
+======================================== */
+
+.category {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/* ========================================
+   การ์ดแต่ละหมวด
+======================================== */
+
+.category > div {
+    width: 100%;
+    min-height: 180px;
+
+    padding: 35px 60px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    position: relative;
+    overflow: hidden;
+
+    background-size: cover;
+    background-position: center;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+
+    transition: all 0.3s ease;
+}
+
+
+/* ========================================
+   เอฟเฟกต์ Hover
+======================================== */
+
+.category > div:hover {
+    transform: scale(1.01);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ========================================
+   Overlay สีดำ
+======================================== */
+
+.category > div::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.75),
+        rgba(0, 0, 0, 0.25)
+    );
+
+    z-index: 1;
+}
+
+
+/* ========================================
+   รูปพื้นหลัง
+======================================== */
+
+.category01 {
+    background-image: url("https://c.files.bbci.co.uk/93D2/production/_111524873_artwork.jpg");
+}
+
+.category02 {
+    background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20240914/pngtree-a-beautiful-underwater-scene-with-sun-rays-shining-through-the-water-image_16201993.jpg");
+}
+
+.category03 {
+    background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20240522/pngtree-abstract-cloudy-background-beautiful-natural-streaks-of-sky-and-clouds-red-image_15684333.jpg");
+}
+
+.category04 {
+    background-image: url("https://media.istockphoto.com/id/2198900862/th/%E0%B9%80%E0%B8%A7%E0%B8%84%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C/%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B9%E0%B8%81%E0%B8%9F%E0%B8%AD%E0%B8%AA%E0%B8%8B%E0%B8%B4%E0%B8%A5%E0%B9%84%E0%B8%94%E0%B9%82%E0%B8%99%E0%B9%80%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B9%83%E0%B8%99%E0%B8%8A%E0%B8%B1%E0%B9%89%E0%B8%99%E0%B8%94%E0%B8%B4%E0%B8%99.jpg?s=612x612&w=0&k=20&c=8OQn02tEIbOyD-6l_Q_bxNUHyq6pOQJTsPY1bNaleQQ=");
+}
+
+.category05 {
+    background-image: url("https://stu40500site.wordpress.com/wp-content/uploads/2016/11/cropped-dinosaurs-wallpapers-for-desktop-11686-full-hd-wallpaper.jpg");
+}
+
+
+/* ========================================
+   ข้อความ
+======================================== */
+
+.category h2 {
+    margin: 0 0 12px;
+
+    color: white;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ========================================
+   ปุ่ม
+======================================== */
+
+.category a {
+    display: inline-block;
+
+    padding: 9px 20px;
+
+    border-radius: 30px;
+
+    background: white;
+    color: #222;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    position: relative;
+    z-index: 2;
+
+    transition: all 0.3s ease;
+}
+
+
+.category a:hover {
+    background: #222;
+    color: white;
+
+    transform: translateX(8px);
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .category-section {
+        padding: 30px 0;
+    }
+
+    .category > div {
+        min-height: 160px;
+
+        padding: 25px 30px;
+    }
+
+    .category h2 {
+        font-size: 23px;
+    }
+
+    .category a {
+        font-size: 14px;
+    }
+
+}
+
+/*วิดิโอแนะนำ*/
+.video-section {
+    padding: 50px 8%;
+    background: #252b25;
+    color: white;
+}
+
+.video-section h2 {
+    margin-bottom: 25px;
+}
+
+/* แถววิดีโอ เลื่อนซ้าย-ขวา */
+.video-list {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 15px;
+}
+
+/* การ์ดวิดีโอ */
+.video-card {
+    min-width: 350px;
+    background: #3a403a;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* วิดีโอ */
+.video-card iframe {
+    width: 100%;
+    height: 200px;
+    border: none;
+    border-radius: 8px;
+}
+
+.video-card h3 {
+    font-size: 16px;
+    margin: 10px 5px;
+}
+
+
+/* =========================
+   สมาชิกกลุ่ม
+========================= */
+
+.contact {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+/* หัวข้อ */
+.contact > h1 {
+    font-size: 42px;
+    margin-bottom: 50px;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 2px;
+    display: inline-block;
+    font-size: 50px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    background: #ffffff;
+    padding: 20px 80px;
+    border: 5px solid #070060;
+    border-radius: 25px;
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.18),
+        0 0 0 10px rgba(107, 142, 35, 0.12);
+
+    margin-bottom: 60px;
+}
+
+.contact > h1 {
+    display: inline-block;
+
+    padding: 12px 35px;
+
+    border: 3px solid #6b8e23;
+    border-radius: 15px;
+
+    color: #344e41;
+
+    background: #ffffff;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+
+    font-size: 32px;
+
+    margin-bottom: 50px;
+}
+
+/* กล่องสมาชิกทั้งหมด */
+.member-list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 35px 25px;
+    justify-items: center;
+}
+
+/* การจัดตำแหน่ง
+   3 คนแรกอยู่แถวบน
+   2 คนถัดมาอยู่แถวล่าง */
+.member-card:nth-child(1) {
+    grid-column: 1 / span 2;
+}
+
+.member-card:nth-child(2) {
+    grid-column: 3 / span 2;
+}
+
+.member-card:nth-child(3) {
+    grid-column: 5 / span 2;
+}
+
+.member-card:nth-child(4) {
+    grid-column: 2 / span 2;
+}
+
+.member-card:nth-child(5) {
+    grid-column: 4 / span 2;
+}
+
+
+/* =========================
+   การ์ดสมาชิก
+========================= */
+
+.member-card {
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+    border-radius: 25px;
+
+    /* พื้นหลังการ์ด */
+    background: rgba(255, 255, 255, 0.12);
+
+    /* กรอบ */
+    border: 2px solid rgba(255, 255, 255, 0.35);
+
+    /* เงา */
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25);
+
+    backdrop-filter: blur(10px);
+
+    transition: all 0.35s ease;
+}
+
+
+/* ตอนเอาเมาส์ไปวาง */
+.member-card:hover {
+    transform: translateY(-12px) scale(1.03);
+
+    border-color: #ffffff;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================
+   กรอบรูป
+========================= */
+
+.contact-pic {
+    width: 190px;
+    height: 190px;
+
+    margin: 0 auto 20px;
+
+    padding: 7px;
+
+    border-radius: 50%;
+
+    /* กรอบรูป */
+    border: 4px solid #ffffff;
+
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #8ed6ff,
+        #ffffff
+    );
+
+    box-shadow:
+        0 0 0 5px rgba(255,255,255,0.12),
+        0 10px 30px rgba(0,0,0,0.3);
+
+    transition: all 0.4s ease;
+}
+
+
+/* รูปภาพ */
+.contact-pic img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-radius: 50%;
+}
+
+
+/* เอฟเฟกต์ตอน Hover รูป */
+.member-card:hover .contact-pic {
+    transform: rotate(3deg) scale(1.05);
+
+    box-shadow:
+        0 0 25px rgba(255,255,255,0.6);
+}
+
+
+/* =========================
+   ข้อมูลสมาชิก
+========================= */
+
+.contact-info h3 {
+    margin: 10px 0 8px;
+
+    font-size: 19px;
+
+    color: #ffffff;
+
+    font-weight: 600;
+}
+
+
+.contact-info h4 {
+    margin: 0;
+
+    font-size: 15px;
+
+    color: rgba(255,255,255,0.75);
+
+    font-weight: 400;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+/* Tablet */
+@media (max-width: 900px) {
+
+    .member-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .member-card:nth-child(n) {
+        grid-column: auto;
+    }
+
+}
+
+
+/* โทรศัพท์ */
+@media (max-width: 600px) {
+
+    .contact {
+        padding: 40px 15px;
+    }
+
+    .contact > h1 {
+        font-size: 32px;
+        margin-bottom: 35px;
+    }
+
+    .member-list {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .member-card:nth-child(n) {
+        grid-column: auto;
+    }
+
+    .member-card {
+        max-width: 320px;
+    }
+
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+footer {
+    width: 100%;
+    background: #000000;
+    color: #ffffff;
+
+    margin-top: 80px;
+
+    border-top: 2px solid #f5d76e;
+
+    box-sizing: border-box;
+}
+
+
+/* กล่องข้อมูล Footer */
+
+.footer-info {
+    width: 100%;
+    min-height: 230px;
+
+    padding: 45px 50px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 80px;
+}
+
+
+/* ================================
+   ส่วน Copyright
+================================ */
+
+.footer-info > div:first-child {
+    flex: 1;
+}
+
+.footer-info > div:first-child p {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 17px;
+    font-weight: 400;
+}
+
+
+/* ================================
+   ช่องกลาง
+================================ */
+
+.footer-nav {
+    flex: 1;
+}
+
+
+/* ================================
+   ส่วนติดต่อเรา
+================================ */
+
+.footer-info > div:last-child {
+    flex: 1;
+
+    padding-left: 50px;
+
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+.footer-info h4 {
+    margin: 0 0 18px;
+
+    color: #f5d76e;
+
+    font-size: 24px;
+    font-weight: 600;
+}
+
+
+.footer-info p {
+    margin: 7px 0;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* ================================
+   Hover
+================================ */
+
+.footer-info p:hover {
+    color: #f5d76e;
+
+    transition: color 0.3s ease;
+}
+
+
+/* ================================
+   เส้นด้านล่าง
+================================ */
+
+footer::after {
+    content: "";
+
+    display: block;
+
+    width: 100%;
+    height: 4px;
+
+    background: #f5d76e;
+}
+
+
+/* ================================
+   Responsive
+================================ */
+
+@media (max-width: 768px) {
+
+    .footer-info {
+        min-height: auto;
+
+        padding: 40px 25px;
+
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 35px;
+    }
+
+
+    .footer-info > div:first-child,
+    .footer-nav,
+    .footer-info > div:last-child {
+        width: 100%;
+        flex: none;
+    }
+
+
+    .footer-info > div:last-child {
+        padding-left: 0;
+        padding-top: 25px;
+
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+
+    .footer-info h4 {
+        font-size: 22px;
+    }
+
+
+    .footer-info p {
+        font-size: 15px;
+    }
+}
+
+
+/* ==============================
+   Travel Section
+   ============================== */
+
+.travel-section {
+    width: 100%;
+    padding: 60px 20px;
+    background: #f5f7fa;
+    box-sizing: border-box;
+}
+
+.travel-section h1 {
+    text-align: center;
+    font-size: 32px;
+    color: #2e7d32;
+    margin-bottom: 35px;
+}
+.travel-container {
+    max-width: 900px;
+    margin: 0 auto;
+
+    /* เรียงลงมาทีละอัน */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 35px;
+}
+
+
+/* ==============================
+   Travel Card
+   ============================== */
+
+.travel01,
+.travel02,
+.travel03,
+.travel04,
+.travel05 {
+    background: #ffffff;
+
+    border-radius: 18px;
+    overflow: hidden;
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.10);
+
+    border: 1px solid #e5e7eb;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* ==============================
+   Hover
+   ============================== */
+
+.travel01:hover,
+.travel02:hover,
+.travel03:hover,
+.travel04:hover,
+.travel05:hover {
+
+    transform: translateY(-6px);
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+
+
+/* ==============================
+   รูปภาพ
+   ============================== */
+
+.travel01 img,
+.travel02 img,
+.travel03 img,
+.travel04 img,
+.travel05 img {
+
+    width: 100%;
+    height: 300px;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.4s ease;
+}
+
+
+.travel01:hover img,
+.travel02:hover img,
+.travel03:hover img,
+.travel04:hover img,
+.travel05:hover img {
+
+    transform: scale(1.03);
+}
+
+
+/* ==============================
+   หัวข้อ
+   ============================== */
+
+.travel01 h2,
+.travel02 h2,
+.travel03 h2,
+.travel04 h2,
+.travel05 h2 {
+
+    font-size: 24px;
+
+    line-height: 1.5;
+
+    color: #263238;
+
+    margin: 25px 30px 12px;
+
+    font-weight: 700;
+}
+
+
+/* ==============================
+   รายละเอียด
+   ============================== */
+
+.travel01 p,
+.travel02 p,
+.travel03 p,
+.travel04 p,
+.travel05 p {
+
+    font-size: 16px;
+
+    line-height: 1.9;
+
+    color: #555;
+
+    margin: 0 30px 22px;
+
+    text-align: justify;
+}
+
+
+/* ==============================
+   ปุ่มดูแผนที่
+   ============================== */
+
+.map-link {
+
+    display: inline-block;
+
+    margin: 0 30px 15px;
+
+    padding: 10px 20px;
+
+    background: #2e7d32;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    transition: all 0.3s ease;
+}
+
+
+.map-link:hover {
+
+    background: #1b5e20;
+
+    transform: translateX(5px);
+}
+
+
+/* ==============================
+   แผนที่ตัวอย่าง
+   ============================== */
+
+.map-preview {
+
+    width: calc(100% - 60px);
+
+    height: 200px;
+
+    margin: 0 30px 30px;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    border: 2px solid #d8dee4;
+
+    background: #eef1f3;
+
+    box-shadow:
+        inset 0 0 8px rgba(0, 0, 0, 0.08);
+}
+
+
+.map-preview iframe {
+
+    width: 100%;
+
+    height: 100%;
+
+    border: 0;
+
+    display: block;
+}
+
+
+/* ==============================
+   Tablet
+   ============================== */
+
+@media (max-width: 900px) {
+
+    .travel-section {
+
+        padding: 45px 20px;
+    }
+
+    .travel-container {
+
+        max-width: 750px;
+
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+    .travel01 img,
+    .travel02 img,
+    .travel03 img,
+    .travel04 img,
+    .travel05 img {
+
+        height: 280px;
+    }
+}
+
+
+/* ==============================
+   Mobile
+   ============================== */
+
+@media (max-width: 600px) {
+
+    .travel-section {
+
+        padding: 30px 15px;
+    }
+
+    .travel-container {
+
+        gap: 25px;
+    }
+
+
+    /* รูป */
+
+    .travel01 img,
+    .travel02 img,
+    .travel03 img,
+    .travel04 img,
+    .travel05 img {
+
+        height: 210px;
+    }
+
+
+    /* หัวข้อ */
+
+    .travel01 h2,
+    .travel02 h2,
+    .travel03 h2,
+    .travel04 h2,
+    .travel05 h2 {
+
+        font-size: 19px;
+
+        margin: 18px 18px 10px;
+    }
+
+
+    /* รายละเอียด */
+
+    .travel01 p,
+    .travel02 p,
+    .travel03 p,
+    .travel04 p,
+    .travel05 p {
+
+        font-size: 14px;
+
+        line-height: 1.8;
+
+        margin: 0 18px 18px;
+    }
+
+
+    /* ปุ่ม */
+
+    .map-link {
+
+        margin-left: 18px;
+
+        margin-right: 18px;
+    }
+
+
+    /* แผนที่ */
+
+    .map-preview {
+
+        width: calc(100% - 36px);
+
+        height: 160px;
+
+        margin-left: 18px;
+
+        margin-right: 18px;
+    }
+}
+
+
+
+/* ========================================
+   TIMELINE ประวัติศาสตร์โลก
+======================================== */
+
+.timeline-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 20px 100px;
+}
+
+
+/* หัวข้อ */
+
+.timeline-title {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.timeline-title h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.timeline-title p {
+    color: #666;
+    font-size: 17px;
+}
+
+
+/* เส้น Timeline หลัก */
+
+.timeline {
+    position: relative;
+    width: 100%;
+}
+
+
+/* เส้นตรงกลาง */
+
+.timeline::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    left: 50%;
+
+    width: 4px;
+
+    background-color: #f5d784;
+
+    transform: translateX(-50%);
+
+    border-radius: 10px;
+}
+
+
+/* แต่ละเหตุการณ์ */
+
+.timeline-item {
+    position: relative;
+
+    width: 50%;
+
+    padding: 20px 45px;
+
+    box-sizing: border-box;
+}
+
+
+/* สลับซ้ายขวา */
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+
+    text-align: left;
+}
+
+
+/* จุดบนเส้น */
+
+.timeline-item::before {
+    content: "";
+
+    position: absolute;
+
+    top: 35px;
+
+    width: 18px;
+    height: 18px;
+
+    background-color: #f5d784;
+
+    border: 4px solid #fff;
+
+    border-radius: 50%;
+
+    box-shadow: 0 0 0 2px #f5d784;
+
+    z-index: 2;
+}
+
+
+/* จุดฝั่งซ้าย */
+
+.timeline-item:nth-child(odd)::before {
+    right: -10px;
+}
+
+
+/* จุดฝั่งขวา */
+
+.timeline-item:nth-child(even)::before {
+    left: -10px;
+}
+
+
+/* กล่องข้อมูล */
+
+.timeline-content {
+    background-color: #fff;
+
+    padding: 25px;
+
+    border: 1px solid #dcdcdc;
+
+    border-radius: 18px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s ease;
+}
+
+
+/* Hover */
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ปี */
+
+.timeline-year {
+    display: inline-block;
+
+    background-color: #f5d784;
+
+    color: #333;
+
+    padding: 7px 15px;
+
+    border-radius: 20px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+
+/* หัวข้อ */
+
+.timeline-content h2 {
+    margin: 5px 0 8px;
+
+    color: #333;
+
+    font-size: 24px;
+}
+
+
+/* ชื่อมหายุค */
+
+.timeline-content h3 {
+    margin: 0 0 15px;
+
+    color: #777;
+
+    font-size: 17px;
+
+    font-weight: 600;
+}
+
+
+/* เนื้อหา */
+
+.timeline-content p {
+    color: #555;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    margin: 5px 0 15px;
+}
+
+
+/* คำว่าเหตุการณ์สำคัญ */
+
+.timeline-content strong {
+    color: #333;
+
+    font-size: 16px;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+
+    .timeline-section {
+        padding: 40px 15px 80px;
+    }
+
+    /* เส้นอยู่ทางซ้าย */
+
+    .timeline::before {
+        left: 25px;
+    }
+
+
+    /* ทุกกล่องอยู่ด้านขวา */
+
+    .timeline-item,
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+
+        width: 100%;
+
+        left: 0;
+
+        padding-left: 70px;
+        padding-right: 0;
+
+        text-align: left;
+    }
+
+
+    /* จุด */
+
+    .timeline-item:nth-child(odd)::before,
+    .timeline-item:nth-child(even)::before {
+
+        left: 16px;
+        right: auto;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .timeline-title h1 {
+        font-size: 28px;
+    }
+
+    .timeline-title p {
+        font-size: 15px;
+    }
+
+    .timeline-content {
+        padding: 20px;
+    }
+
+    .timeline-content h2 {
+        font-size: 21px;
+    }
+
+    .timeline-content h3 {
+        font-size: 15px;
+    }
+
+    .timeline-content p {
+        font-size: 14px;
+    }
+
+}
+
+
+/* ==============================
+   RESET
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    font-family:
+        "Noto Sans Thai",
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    background:
+        #f5f1e6;
+
+    color: #444;
+}
+
+
+
+/* ==============================
+   MAIN
+============================== */
+
+.fossil-section {
+
+    width: 100%;
+
+    padding:
+        45px 40px 70px;
+}
+
+
+
+/* ==============================
+   หัวข้อหลัก
+============================== */
+
+.fossil-section > h1 {
+
+    text-align: center;
+
+    font-size: 40px;
+
+    color: #3e5035;
+
+    margin-bottom: 10px;
+
+    text-shadow:
+        2px 2px 3px
+        rgba(0, 0, 0, 0.15);
+}
+
+
+.fossil-section > h1::after {
+
+    content: "";
+
+    display: block;
+
+    width: 90px;
+
+    height: 5px;
+
+    margin:
+        12px auto 0;
+
+    background:
+        #d39b32;
+
+    border-radius:
+        10px;
+}
+
+
+
+.section-description {
+
+    text-align: center;
+
+    font-size: 17px;
+
+    color: #6d604e;
+
+    margin-bottom: 40px;
+}
+
+
+
+/* ==============================
+   แต่ละหมวด
+============================== */
+
+.fossil-category {
+
+    margin-bottom: 40px;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 6px 16px
+        rgba(60, 48, 30, 0.12);
+}
+
+
+
+/* ==============================
+   หัวข้อหมวด
+============================== */
+
+.category-title {
+
+    padding:
+        16px 25px;
+
+    color: white;
+
+    box-shadow:
+        0 4px 10px
+        rgba(0, 0, 0, 0.15);
+}
+
+
+.category-title h2 {
+
+    font-size: 24px;
+
+    font-weight: bold;
+}
+
+
+
+/* ==============================
+   สีแต่ละหมวด
+============================== */
+
+.category-1 {
+
+    background:
+        linear-gradient(
+            90deg,
+            #42613b,
+            #63804b
+        );
+}
+
+
+.category-2 {
+
+    background:
+        linear-gradient(
+            90deg,
+            #71833f,
+            #9a9d4e
+        );
+}
+
+
+.category-3 {
+
+    background:
+        linear-gradient(
+            90deg,
+            #39727a,
+            #609a99
+        );
+}
+
+
+.category-4 {
+
+    background:
+        linear-gradient(
+            90deg,
+            #795238,
+            #a87348
+        );
+}
+
+
+.category-5 {
+
+    background:
+        linear-gradient(
+            90deg,
+            #704b6c,
+            #9a6688
+        );
+}
+
+
+
+/* ==============================
+   กล่องการ์ด
+============================== */
+
+.animal-container {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap: 20px;
+
+    padding: 25px;
+
+    background:
+        rgba(
+            255,
+            252,
+            240,
+            0.78
+        );
+}
+
+
+
+/* ==============================
+   FLIP CARD
+============================== */
+
+.flip-card {
+
+    width: 100%;
+
+    height: 300px;
+
+    perspective: 1000px;
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+
+/* ==============================
+   ซ่อน checkbox
+============================== */
+
+.flip-card input {
+
+    display: none;
+}
+
+
+
+/* ==============================
+   ตัวที่หมุน
+============================== */
+
+.flip-card-inner {
+
+    display: block;
+
+    position: relative;
+
+    width: 100%;
+
+    height: 100%;
+
+    cursor: pointer;
+
+    transform-style:
+        preserve-3d;
+
+    transition:
+        transform 0.55s ease;
+}
+
+
+
+/* ==============================
+   พลิกการ์ด
+============================== */
+
+.flip-card input:checked
++ .flip-card-inner {
+
+    transform:
+        rotateY(180deg);
+}
+
+
+
+/* ==============================
+   ด้านหน้า / ด้านหลัง
+============================== */
+
+.flip-card-front,
+.flip-card-back {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    backface-visibility:
+        hidden;
+
+    -webkit-backface-visibility:
+        hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    border:
+        3px solid #a99568;
+
+    box-shadow:
+        0 7px 16px
+        rgba(
+            60,
+            48,
+            30,
+            0.18
+        );
+}
+
+
+
+/* ==============================
+   ด้านหน้า
+============================== */
+
+.flip-card-front {
+
+    background:
+        linear-gradient(
+            180deg,
+            #faf6e8,
+            #ded3b6
+        );
+
+    transform:
+        rotateY(0deg);
+
+    justify-content:
+        flex-start;
+}
+
+
+
+/* ==============================
+   รูปด้านหน้า
+============================== */
+
+.flip-card-front img {
+
+    width: 100%;
+
+    height: 175px;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-bottom:
+        3px solid #a99568;
+}
+
+
+
+/* ==============================
+   ด้านหลัง
+============================== */
+
+.flip-card-back {
+
+    transform:
+        rotateY(180deg);
+
+    background:
+        #3b3020;
+
+    justify-content:
+        flex-end;
+}
+
+
+
+/* ==============================
+   รูปฟอสซิลด้านหลัง
+   เต็มการ์ด
+============================== */
+
+.flip-card-back > img {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    border: none;
+
+    z-index: 1;
+}
+
+
+
+/* ==============================
+   ไล่สีด้านล่างรูป
+============================== */
+
+.flip-card-back::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 0;
+
+    height: 50%;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(
+                0,
+                0,
+                0,
+                0.82
+            ),
+            rgba(
+                0,
+                0,
+                0,
+                0
+            )
+        );
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+
+
+/* ==============================
+   เนื้อหาด้านหลัง
+============================== */
+
+.back-content {
+
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-end;
+}
+
+
+
+/* ==============================
+   ชื่อสัตว์ด้านหน้า
+============================== */
+
+.flip-card-front h3 {
+
+    margin-top: 13px;
+
+    padding:
+        0 8px;
+
+    font-size: 18px;
+
+    line-height: 1.3;
+
+    color: #3f5034;
+}
+
+
+
+/* ==============================
+   ชื่อฟอสซิลด้านหลัง
+============================== */
+
+.flip-card-back h3 {
+
+    margin:
+        0 10px 10px;
+
+    padding: 0;
+
+    font-size: 16px;
+
+    line-height: 1.3;
+
+    color: white;
+
+    text-shadow:
+        1px 1px 4px
+        rgba(0, 0, 0, 0.9);
+}
+
+
+
+/* ==============================
+   ข้อความด้านหน้า
+============================== */
+
+.flip-card-front p {
+
+    margin-top: 6px;
+
+    padding:
+        0 8px;
+
+    font-size: 12px;
+
+    color: #776a51;
+}
+
+
+
+/* ==============================
+   ปุ่มย้อนกลับ
+============================== */
+
+.back-button {
+
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    padding:
+        8px 22px;
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    background:
+        rgba(
+            45,
+            35,
+            20,
+            0.82
+        );
+
+    border:
+        2px solid white;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 3px 8px
+        rgba(
+            0,
+            0,
+            0,
+            0.4
+        );
+
+    transition:
+        all 0.2s ease;
+}
+
+
+
+/* ==============================
+   เอฟเฟกต์ปุ่มย้อนกลับ
+============================== */
+
+.back-button:hover {
+
+    background:
+        #d39b32;
+
+    border-color:
+        #ffffff;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 5px 12px
+        rgba(
+            0,
+            0,
+            0,
+            0.45
+        );
+}
+
+
+
+/* ==============================
+   EFFECT ตอนเอาเมาส์วาง
+============================== */
+
+.flip-card:hover {
+
+    transform:
+        translateY(-6px);
+}
+
+
+
+/* ==============================
+   เพิ่มเงาการ์ด
+============================== */
+
+.flip-card:hover
+.flip-card-front,
+
+.flip-card:hover
+.flip-card-back {
+
+    box-shadow:
+        0 12px 24px
+        rgba(
+            60,
+            48,
+            30,
+            0.25
+        );
+}
+
+
+
+/* ==============================
+   สีขอบแต่ละประเภท
+============================== */
+
+.category-1
+~ .animal-container
+.flip-card-front,
+
+.category-1
+~ .animal-container
+.flip-card-back {
+
+    border-color:
+        #71865c;
+}
+
+
+
+/* ==============================
+   TABLET
+============================== */
+
+@media (max-width: 1100px) {
+
+    .fossil-section {
+
+        padding:
+            40px 25px 60px;
+    }
+
+
+    .animal-container {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 18px;
+
+        padding: 22px;
+    }
+
+
+    .flip-card {
+
+        height: 300px;
+    }
+}
+
+
+
+/* ==============================
+   TABLET เล็ก
+============================== */
+
+@media (max-width: 800px) {
+
+    .fossil-section > h1 {
+
+        font-size: 34px;
+    }
+
+
+    .category-title h2 {
+
+        font-size: 22px;
+    }
+
+
+    .animal-container {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        padding: 18px;
+
+        gap: 16px;
+    }
+
+
+    .flip-card {
+
+        height: 290px;
+    }
+
+
+    .flip-card-front img {
+
+        height: 165px;
+    }
+
+
+    .flip-card-back h3 {
+
+        font-size: 15px;
+    }
+
+
+    .back-button {
+
+        padding:
+            7px 18px;
+
+        font-size: 12px;
+
+        margin-bottom: 15px;
+    }
+}
+
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 600px) {
+
+    .fossil-section {
+
+        padding:
+            35px 15px 50px;
+    }
+
+
+    .fossil-section > h1 {
+
+        font-size: 30px;
+    }
+
+
+    .section-description {
+
+        font-size: 15px;
+
+        margin-bottom: 30px;
+    }
+
+
+    .category-title {
+
+        padding:
+            14px 18px;
+    }
+
+
+    .category-title h2 {
+
+        font-size: 20px;
+    }
+
+
+    .animal-container {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        padding: 14px;
+
+        gap: 14px;
+    }
+
+
+    .flip-card {
+
+        height: 280px;
+    }
+
+
+    .flip-card-front img {
+
+        height: 155px;
+    }
+
+
+    .flip-card-front h3 {
+
+        font-size: 16px;
+
+        margin-top: 10px;
+    }
+
+
+    .flip-card-front p {
+
+        font-size: 11px;
+
+        margin-top: 5px;
+    }
+
+
+    .flip-card-back h3 {
+
+        font-size: 14px;
+
+        margin-bottom: 8px;
+    }
+
+
+    .back-button {
+
+        padding:
+            6px 15px;
+
+        font-size: 11px;
+
+        margin-bottom: 13px;
+    }
+}
+
+
+
+/* ==============================
+   MOBILE เล็ก
+============================== */
+
+@media (max-width: 450px) {
+
+    .animal-container {
+
+        grid-template-columns:
+            1fr;
+
+        padding: 15px;
+    }
+
+
+    .flip-card {
+
+        height: 300px;
+    }
+
+
+    .flip-card-front img {
+
+        height: 180px;
+    }
+
+
+    .flip-card-front h3 {
+
+        font-size: 18px;
+    }
+
+
+    .flip-card-back h3 {
+
+        font-size: 17px;
+    }
+
+
+    .back-button {
+
+        padding:
+            8px 20px;
+
+        font-size: 13px;
+    }
+}
+
+
+
+/* ===== หัวข้อหลักแบบเคลื่อนไหว ===== */
+
+.hero {
+    min-height: 620px;
+    padding: 80px 10%;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+
+    background: #37200b;
+    color: #fff8e8;
+}
+
+
+/* แสงพื้นหลัง */
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    right: 5%;
+    top: 15%;
+
+    background: #ffad55;
+    border-radius: 50%;
+    opacity: .25;
+
+    animation: float 5s ease-in-out infinite;
+}
+
+
+/* จุดตกแต่ง */
+.particles span {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #e8c477;
+    border-radius: 50%;
+    animation: float 4s infinite ease-in-out;
+}
+
+.particles span:nth-child(1) { left: 15%; top: 20%; }
+.particles span:nth-child(2) { left: 30%; top: 75%; }
+.particles span:nth-child(3) { left: 55%; top: 18%; }
+.particles span:nth-child(4) { right: 25%; top: 65%; }
+.particles span:nth-child(5) { right: 10%; top: 30%; }
+.particles span:nth-child(6) { right: 5%; bottom: 15%; }
+
+
+/* หัวข้อ */
+.hero-title {
+    position: relative;
+    z-index: 2;
+
+    margin: 0;
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1.15;
+    font-weight: 800;
+}
+
+
+/* บรรทัดแรก */
+.title-white {
+    display: block;
+    color: #fff8e8;
+
+    animation: show .8s ease;
+}
+
+
+/* บรรทัดที่สอง */
+.title-gold {
+    display: block;
+
+    color: #e5b75f;
+
+    animation: show 1s ease;
+}
+
+
+/* เส้นใต้หัวข้อ */
+.hero-title::after {
+    content: "🦖";
+    display: block;
+
+    width: 100px;
+    height: 35px;
+
+    margin-top: 10px;
+
+    font-size: 27px;
+    line-height: 32px;
+
+    border-bottom: 3px solid #e5b75f;
+
+    animation: dinoRun 2.5s ease-in-out infinite;
+}
+
+@keyframes dinoRun {
+
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+
+    25% {
+        transform: translateX(25px) translateY(-4px);
+    }
+
+    50% {
+        transform: translateX(65px) translateY(0);
+    }
+
+    75% {
+        transform: translateX(25px) translateY(-4px);
+    }
+
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+.hero-title:hover::after {
+    width: 120px;
+}
+
+
+/* คำอธิบาย */
+.hero-description {
+    position: relative;
+    z-index: 2;
+
+    max-width: 650px;
+
+    margin-top: 25px;
+
+    color: #f1dfbd;
+
+    font-size: 17px;
+    line-height: 1.8;
+
+    animation: show 1.2s ease;
+}
+
+
+/* Animation */
+@keyframes show {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+
+
+
+
+
